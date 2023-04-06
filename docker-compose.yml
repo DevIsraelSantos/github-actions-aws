@@ -3,7 +3,8 @@ version: "3"
 services:
   app:
     build: .
-    image: imagemTest:latest
+    image: imagemtest:latest
+    
     ports:
      - "80:80"
     command: npm run start
