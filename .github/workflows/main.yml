@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,3 +15,12 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run deploy:homolog
+
+  job-tag:
+    name: job-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Tag Name example
+        run: |
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
