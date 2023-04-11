@@ -1,0 +1,22 @@
+name: Mover tag da main para a production
+
+on:
+  pull_request:
+    types: [closed]
+  push:
+    branches:
+      - main
+
+jobs:
+  move-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Move tag
+        if: github.event.pull_request.merged == true
+        run: |
+          # Obtém o nome da tag criada na branch main
+          tag=$(git describe --tags --abbrev=0)
+          # Move a tag para a branch production
+          git push origin "$tag":refs/tags/"$tag"
