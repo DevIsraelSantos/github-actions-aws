@@ -27,6 +27,8 @@ jobs:
         run: |
           echo "BRANCH MAIN Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "BRANCH MAIN Tag name from github.ref_name: ${{ github.ref_name }}"
+          ls -la
+          pwd
           git config --global user.email "dev.israelsantos@gmail.com"
           git config --global user.name "DevIsraelSantos"
           tag=$(git describe --tags --abbrev=0)
