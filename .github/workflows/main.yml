@@ -8,16 +8,16 @@ on:
       - "*"
 
 jobs:
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm run deploy:homolog
+  # build:
+  #   name: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16
+  #     - run: npm ci
+  #     - run: npm run deploy:homolog
 
   job-tag:
     name: job-tag
@@ -27,5 +27,7 @@ jobs:
         run: |
           echo "BRANCH MAIN Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "BRANCH MAIN Tag name from github.ref_name: ${{ github.ref_name }}"
+          git config --global user.email "dev.israelsantos@gmail.com"
+          git config --global user.name "DevIsraelSantos"
           tag=$(git describe --tags --abbrev=0)
           echo "git push origin $tag:refs/tags/$tag" # Comentando esse comando para exibir apenas o echo
