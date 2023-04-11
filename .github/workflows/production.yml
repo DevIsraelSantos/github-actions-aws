@@ -27,4 +27,4 @@ jobs:
           echo "BRANCH PRODUCTION Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "BRANCH PRODUCTION Tag name from github.ref_name: ${{  github.ref_name }}"
           tag=$(git describe --tags --abbrev=0)
-          echo "$tag":refs/tags/"$tag"
+          echo "git push origin $tag:refs/tags/$tag"
