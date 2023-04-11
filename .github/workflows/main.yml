@@ -26,6 +26,6 @@ jobs:
       - name: GitHub Tag Name example
         run: |
           echo "BRANCH MAIN Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-          echo "BRANCH MAIN Tag name from github.ref_name: ${{  github.ref_name }}"
+          echo "BRANCH MAIN Tag name from github.ref_name: ${{ github.ref_name }}"
           tag=$(git describe --tags --abbrev=0)
-          echo "git push origin $tag:refs/tags/$tag"
+          echo "git push origin $tag:refs/tags/$tag" # Comentando esse comando para exibir apenas o echo
