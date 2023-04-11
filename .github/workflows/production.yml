@@ -2,7 +2,10 @@ name: Deploy da Production
 
 on:
   push:
-    branches: ['production']
+    branches:
+      - production
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -14,3 +17,12 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run deploy:production
+
+  job-tag:
+    name: job-tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Tag Name example
+        run: |
+          echo "BRANCH PRODUCTION Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "BRANCH PRODUCTION Tag name from github.ref_name: ${{  github.ref_name }}"
